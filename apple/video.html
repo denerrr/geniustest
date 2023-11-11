@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset = "UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+
+ body {
+  background-image: url('fon.jpg');
+  background-size: cover;
+
+  background-repeat: no-repeat;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin-top: 80px; /* Додайте відступ вниз, рівний висоті вашого header */
+}
+
+
+body {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+  /* Визначає анімацію для свойства opacity.
+     При зміні прозорості буде використовуватися плавний перехід тривалістю 0.5 секунд
+     з ефектом "ease-in-out", що надає плавний інтерполяційний ефект при зміні значення. */
+}
+
+body.fade-out {
+  opacity: 0;
+  /* Визначає стилі для випадкового класу "fade-out", який додається до елемента body за
+   допомогою JavaScript в момент переходу між сторінками.
+   Коли клас "fade-out" додається, властивість opacity змінюється на 0,
+   що призводить до зникнення елемента з екрану. */
+}
+
+body.slide-up{
+  transition: transform 0.4s ease-in-out;
+  transform: translateY(-100%);
+}
+
+h2 {
+  text-align: left;/*Де буде загаловок по центру або з права або з ліва*/
+  color: black; /* Колір тексту заголовку */
+}
+
+header {
+  position: fixed; /* Зробіть header фіксованим */
+  top: 0; /* Розміщуйте його вгорі сторінки */
+  width: 100%; /* Зробіть ширину 100% екрану */
+  background-color: #000000; /* Колір фону */
+  text-align: center;/*Меню вибору сторінок*/
+  padding: 20px ;/*Розмір фону там де вибір сторінок*/
+  z-index: 1000; /* Задайте z-index для перекриття інших елементів на сторінці */
+}
+
+ul {
+  font-size: 18px; /*Розмір посилань (головна, галерея, реєстрація)*/
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  display: inline; /*текст буде попорядку*/
+  margin: 0 10px; /*відступи між словами в меню*/
+}
+
+ul li a {
+  text-decoration: none;/*немає декорації тексту*/
+  color: #fff; /* Колір тексту посилань */
+}
+
+	 </style>
+
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const links = document.querySelectorAll(".page-transition"); /* Знаходить усі елементи <a> (посилання) на сторінці. */
+
+ /* Для кожного знайденого посилання додає слухача подій для обробки кліку. */
+      links.forEach(link => {
+        link.addEventListener("click", function (event) {
+ /* Спиняє стандартну обробку кліку, щоб уникнути переходу за замовчуванням. */
+          event.preventDefault();
+
+          const transitionDirection = this.getAttribute("data-transition");
+
+ /* Додає клас "fade-out" до елемента <body> для виклику анімації переходу. */
+          document.body.classList.add(transitionDirection);
+
+ /* Отримує значення атрибуту href (URL) клікнутого посилання. */         
+          const href = this.getAttribute("href");
+ /* Встановлює таймер, який затримує перехід до нової сторінки на 0.5 секунди. */         
+          setTimeout(() => {
+            window.location.href = href;
+          }, 400); // Час анімації в мілісекундах (в даному випадку 0.5 секунди)
+        });
+      });
+    });
+  </script>
+
+<title>Галерея</title>
+
+</head>
+
+<body>
+<div class="container">
+  </div>
+	
+<header align = "center">
+
+<ul>
+<li><a href="apple.html" class="page-transition" data-transition="fade-out">Головна</a></li>
+<li><a>|</a></li>
+<li><a href="video.html" class="page-transition" data-transition="fade-out">Галерея</a></li>
+<li><a>|</a></li>
+<li><a href="infoo.html" class="page-transition" data-transition="slide-up">Замовлення</a></li>
+
+</ul>
+</header>
+
+<p align="center"> <iframe width="1280" height="640" src="https://www.youtube.com/embed/5gafmeC8CG4" title="iPhone 15 Pro Max у РЕАЛЬНОМУ ЖИТТІ: огляд та ДОСВІД ВИКОРИСТАННЯ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></p>
+
+
+
+</body>
+
+</html>

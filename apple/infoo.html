@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<style>
+body {
+  background-image: url('fon.jpg');
+  background-size: cover;
+  
+  background-repeat: no-repeat;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin-top: 80px; /* Додайте відступ вниз, рівний висоті вашого header */
+}
+
+
+body {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+  /* Визначає анімацію для свойства opacity.
+     При зміні прозорості буде використовуватися плавний перехід тривалістю 0.5 секунд
+     з ефектом "ease-in-out", що надає плавний інтерполяційний ефект при зміні значення. */
+}
+
+body.fade-out {
+  opacity: 0;
+  /* Визначає стилі для випадкового класу "fade-out", який додається до елемента body за
+   допомогою JavaScript в момент переходу між сторінками.
+   Коли клас "fade-out" додається, властивість opacity змінюється на 0,
+   що призводить до зникнення елемента з екрану. */
+}
+
+body.slide-up{
+  transition: transform 0.4s ease-in-out;
+  transform: translateY(-100%);
+}
+
+body {
+  margin-top: 80px; /* Додайте відступ вниз, рівний висоті вашого header */
+}
+
+    /* Стилі для меню */
+
+header {
+  position: fixed; /* Зробіть header фіксованим */
+  top: 0; /* Розміщуйте його вгорі сторінки */
+  width: 100%; /* Зробіть ширину 100% екрану */
+  background-color: #000000; /* Колір фону */
+  text-align: center;/*Меню вибору сторінок*/
+  padding: 20px ;/*Розмір фону там де вибір сторінок*/
+  z-index: 1000; /* Задайте z-index для перекриття інших елементів на сторінці */
+}
+
+ul {
+  font-size: 18px; /*Розмір посилань (головна, галерея, реєстрація)*/
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  display: inline; /*текст буде попорядку*/
+  margin: 0 10px; /*відступи між словами в меню*/
+}
+
+ul li a {
+  text-decoration: none;/*немає декорації тексту*/
+  color: #fff; /* Колір тексту посилань */
+}
+	 	
+
+form {
+  background-image: url('fonform.jpg');
+  box-sizing: border-box; /*рамка*/
+  width: 250px; /*ширина*/
+  padding:10px; /*відступи*/
+  border-radius: 30px; /*округлення*/
+  box-shadow: 0px 2px 10px grey; /*тінь за рамками*/
+  margin: 20vh auto 0; /*вировняти форму в центр*/
+}
+.conteiner {
+  margin: 0 auto;
+}
+.submit {
+  text-align: center; /*по центру кнопку Замовити*/
+}
+form label {
+  display: block;
+}
+h2 {
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 3px 1px 1px #000000;
+}
+
+h2::after{
+  display: block;
+  width: 100%;
+  height: 10px;
+  background: green;
+  position: absolute; /*відступ*/
+  left: 0;
+  top: 100%;
+}
+
+p {
+  color: #ffffff;
+  text-shadow: 3px 1px 1px #000000;
+  margin: 5%;
+
+}
+</style>
+
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const links = document.querySelectorAll(".page-transition"); /* Знаходить усі елементи <a> (посилання) на сторінці. */
+
+ /* Для кожного знайденого посилання додає слухача подій для обробки кліку. */
+      links.forEach(link => {
+        link.addEventListener("click", function (event) {
+ /* Спиняє стандартну обробку кліку, щоб уникнути переходу за замовчуванням. */
+          event.preventDefault();
+
+          const transitionDirection = this.getAttribute("data-transition");
+
+ /* Додає клас "fade-out" до елемента <body> для виклику анімації переходу. */
+          document.body.classList.add(transitionDirection);
+
+ /* Отримує значення атрибуту href (URL) клікнутого посилання. */         
+          const href = this.getAttribute("href");
+ /* Встановлює таймер, який затримує перехід до нової сторінки на 0.5 секунди. */         
+          setTimeout(() => {
+            window.location.href = href;
+          }, 400); // Час анімації в мілісекундах (в даному випадку 0.5 секунди)
+        });
+      });
+    });
+  </script>
+
+<title>Замовлення</title>
+
+<header align = "center">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<ul>
+<li><a href="apple.html" class="page-transition" data-transition="fade-out">Головна</a></li>
+<li><a>|</a></li>
+<li><a href="video.html" class="page-transition" data-transition="fade-out">Галерея</a></li>
+<li><a>|</a></li>
+<li><a href="infoo.html" class="page-transition" data-transition="fade-out">Замовлення</a></li>
+
+</ul>
+</header>
+
+<meta charset="utf-8">
+<link href="style.css" rel="stylesheet">
+ </head>
+ <body>
+  <form action="#" method="post">
+        <div class="contaner">
+          <h2>Оформлення замовлення</h2>
+          <p>
+            <label for="first_name">Код товару </label>
+            <input type="text" id="first_name"> 
+          </p>
+          <p>
+            <label for="first_name">Ім'я</label>
+            <input type="text" id="first_name"> 
+          </p>
+          <p>
+            <label for="second_name">Прізвище</label>
+            <input type="text" id="second_name">
+          </p>
+          <p>
+            <label for="pass">По батькові</label>
+            <input type="text" id="pass" placeholder="">
+          </p>
+          <p>
+            <label for="ph_number">Номер телефону</label>
+            <input type="text" id="ph_number" placeholder="">
+          </p>
+          <p>
+            <label for="pass">Місто</label>
+            <input type="text" id="pass" placeholder="">
+          </p>
+          <p>
+            <label for="pass">Відділення нової пошти</label>
+            <input type="text" id="pass" placeholder="">
+          </p>
+          <p class="s"><label>
+            <input type="radio" name="s" value="male">Оплата при отриманні
+           </label>
+
+          </p>
+          <p class="s"><label>
+            <input type="radio" name="s" value="female">Оплата на сайті
+           </label>
+
+          </p>
+          <p>
+            <label for="news"><input type="checkbox" id="news" name="news">Я хочу отримувати сповіщення про нові товари </label>
+            </p>
+            <p class="submit"><input type="submit" value="Замовити"></p>
+          </div>
+
+</head>
+
+	
+</body>
+
+</html>
